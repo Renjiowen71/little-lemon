@@ -1,70 +1,33 @@
+.carousel-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-y: hidden;
+    height: 520px;
+    width: 100%;
+}
+
+.carousel-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.carousel-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 20px;
+}
+
+.carousel-container::-webkit-scrollbar-thumb {
+    background: var(--primary-colorYellow);
+    border-radius: 20px;
+}
+
+.carousel-container::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-colorCream);
+}
+
 .carousel-container {
-    position: relative;
-    min-height: 500px;
-    margin: 0 auto;
-    .carousel {
-        position: relative;
-    }
-
-    .carousel-track {
-        position: relative;
-    }
-
-    .carousel-item {
-        position: absolute;
-        width: 200px;
-        display: relative;
-        transition: left 0.5s ease-out, opacity 0.5s ease-in-out;
-    }
-
-    .invisible{
-        opacity: 0;
-    }
-    .half-visible{
-        opacity: 0.5;
-    }
-    .visible{
-        opacity: 1;
-    }
-
-    .carousel-item:hover{
-        z-index:2;
-        opacity: 1;
-        transition: left 0.5s ease-out, opacity 0.5s ease-in-out;
-    }
-
-    .invisible:hover{
-        opacity: 0;
-    }
-
-    .carousel-button {
-        position: absolute;
-        top: 50%;
-        background-color: var(--primary-colorYellow);
-        color: var(--primary-colorGreen);
-        font-size: 20px;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        z-index: 3;
-        border-radius: 5px;
-        transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.2s;
-        opacity: 0.5;
-    }
-
-    .carousel-button.left {
-        left: 0px;
-    }
-
-    .carousel-button.right {
-        right: 0px;
-    }
-
-    .carousel-button:hover{
-        background-color: var(--secondary-colorCream);
-        transform: scale(1.05);
-        opacity: 1;
-    }
+    scrollbar-width: 20px;
+    scrollbar-color: var(--primary-colorYellow) transparent;
 }
 
 .carousel-mobile-container{

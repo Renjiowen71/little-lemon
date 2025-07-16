@@ -3,8 +3,8 @@ import SpecialsCard from "../card/SpecialsCard";
 import "./Carousel.css";
 
 function CarouselMobile({items}) {
-  const containerRef = useRef(null);
-  const [scrollingDirection, setScrollingDirection] = useState('down');
+   const containerRef = useRef(null);
+  const directionRef = useRef('down');
   const [isPaused, setIsPaused] = useState(false);
   const [isInteracted, setIsInteracted] = useState(false);
 
@@ -12,27 +12,28 @@ function CarouselMobile({items}) {
     const container = containerRef.current;
 
     const bounceScroll = () => {
-      if (container && !isPaused) {
-        if (scrollingDirection === 'down') {
-          container.scrollBy(0, 2);
-        } else if (scrollingDirection === 'up') {
-          container.scrollBy(0, -2);
-        }
+      if (!container || isPaused) return;
 
-        if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
-          setScrollingDirection('up');
-        }
+      if (directionRef.current === 'down') {
+        container.scrollTop += 1;
+      } else {
+        container.scrollTop -= 1;
+      }
 
-        if (container.scrollTop <= 0) {
-          setScrollingDirection('down');
-        }
+      const atEnd = container.scrollTop + container.clientHeight >= container.scrollHeight;
+      const atStart = container.scrollTop <= 0;
+
+      if (atEnd) {
+        directionRef.current = 'up';
+      } else if (atStart) {
+        directionRef.current = 'down';
       }
     };
 
-    const scrollInterval = setInterval(bounceScroll, 50);
+    const scrollInterval = setInterval(bounceScroll, 30);
 
     return () => clearInterval(scrollInterval);
-  }, [scrollingDirection, isPaused]);
+  }, [isPaused]);
 
   const handlePause = () => {
     setIsPaused(true);

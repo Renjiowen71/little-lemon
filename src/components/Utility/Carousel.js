@@ -18,7 +18,7 @@ function Carousel({items}) {
       {innerWidth<800 ? (
           <CarouselMobile items={items} />
       ) : (
-          <CarouselDesktop items={items} innerWidth={innerWidth} />
+          <CarouselDesktop items={items} />
       )}
     </>
   );
